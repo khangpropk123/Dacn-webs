@@ -1,0 +1,127 @@
+/* Styles go here */
+p{
+  font-size: 18pt
+}
+.page-header, .page-header-space {
+    height: 20px;
+  }
+  
+  .page-footer, .page-footer-space {
+    height: 20px;
+  
+  }
+  
+  .page-footer {
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    font-size: 14pt !important;
+    margin-bottom: 0%;
+    width: 100%; /* for demo */
+    height: 4%;
+    background: #106CD6; /* for demo */
+  }
+  
+  .page-header {
+    position: fixed;
+    width: 100%;/* for demo */ /* for demo */
+  }
+  
+  .page-title {
+    page-break-after: always;
+  }
+  .pagebreak { page-break-before: always; }
+  .navbar-toggler:focus {
+    outline: 0;
+  }
+  .nav>.nav-item > .active {
+    color: #eef0f2!important; 
+    background-color:#dc3545  ; 
+  }
+  .nav-item > a:hover {
+    color: #dc3545!important;
+  }
+  .answer-sheet {
+    position: relative;
+    margin: 2% 2% 2% 2%;
+  }
+  .ans-sheet-left{
+    position: fixed;
+    margin-left: 10px;
+  }
+  .ans-sheet-right{
+    position: fixed;
+    margin-right: 10px;
+  }
+  box{
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+  }
+  .circle {
+    background-color:#fff;
+    border:1px solid black;    
+    height:23px;
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    width:23px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin: 5px 0px 5px 8px;
+  }
+  .circle-no {
+    background-color:#fff;   
+    height:23px;
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    width:23px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin: 5px 0px 5px 5px;
+  }
+  body {
+    background: rgb(204, 204, 204);
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  page {
+    background: white;
+    display: block;
+    margin: 0 0 0 0;
+    margin-bottom: 0.5cm;
+    box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+
+  }
+
+  page[size="A4"] {
+    width: 25cm;
+  }
+
+  page[size="A4"][layout="landscape"] {
+    width: 29.7cm;
+    height: 21cm;
+  }
+  
+  
+  
+
+    @media print {
+      html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+                 font-size: 18pt !important;
+          }
+          h1.entry-title {
+          font-size: 24pt !important;
+               }
+      }
+     page {
+      box-shadow: 0;
+      vertical-align: center;
+      font-size: 18pt !important;
+      
+    }

@@ -1,0 +1,662 @@
+<!--
+Script Begin
+-->
+<%
+/* FUNCTION HERE */
+function mix(data){
+  let l=data.length;
+  let r0= Math.floor(Math.random()*l);
+  let r1= Math.floor(Math.random()*l);
+  let r2= Math.floor(Math.random()*l);
+  var rand =[r0,r1,r2];
+  rand.sort(sortNumberAsc);
+
+  return swap(rand,data);
+}
+
+function swap(rand,data){
+
+  for(var i=0;i<rand[0];i++){
+      var tem;
+      tem = data[i];
+      data[i] = data[rand[0]-i];
+      data[rand[0]-i] = tem;
+  }
+  for(var i=rand[0];i<rand[1];i++){
+      var tem;
+      tem = data[i];
+      data[i] = data[rand[1]-i];
+      data[rand[1]-i] = tem;
+  }
+  for(var i=rand[1];i<rand[2];i++){
+      var tem;
+      tem = data[i];
+      data[i] = data[rand[2]-i];
+      data[rand[2]-i] = tem;
+  }
+  return data;
+}
+function sortNumberAsc(a, b){
+  return a - b;
+}
+const labelAns = new Map()
+      .set(0,'A')
+      .set(2,'B')
+      .set(1,'C')
+      .set(3,'D');
+function LabelAns(num){
+  return labelAns.get(num) || [];
+}
+function Correct_ans(object){
+  switch(object.correct_ans){
+    case object.ans.label1.name:{
+      return object.ans.label1.content;
+      break;
+    }
+    case object.ans.label2.name:{
+      return object.ans.label2.content;
+      break;
+    }
+    case object.ans.label3.name:{
+      return object.ans.label3.content;
+      break;
+    }
+    case object.ans.label4.name:{
+      return object.ans.label4.content;
+      break;
+    }
+    default: {
+      return "error";
+    }
+  }
+}
+/* FUNCTION HERE */
+/* Variable Here */
+let Answers = [];
+let numquest = parseInt(num_quest);
+/* Variable Here */
+%>
+<!--
+  Script End
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title style="font-size: 10px;font-weight: bold" id="code">Exam Code: 861</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/print.css">
+
+
+  <style>
+    body {
+      background: rgb(204, 204, 204);
+    }
+
+    page {
+      background: white;
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 0.5cm;
+      box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+    }
+
+    page[size="A4"] {
+      width: 25cm;
+    }
+
+    page[size="A4"][layout="landscape"] {
+      width: 29.7cm;
+      height: 21cm;
+    }
+
+    
+
+    @media print {
+      
+      
+      page {
+        box-shadow: 0;
+        
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+    <div class="page-header" style="text-align: right ">
+        <br/>
+        <button style=" margin-right: 5%" class="btn btn-danger d-print-none" type="button" onClick="window.print()">
+          Print!
+        </button>
+      </div>
+    <div class="page-footer">
+       <p align="right"> <b id="footercode">861</b></p>  
+      </div>
+  <ul class="nav nav-pills nav-dark justify-content-center d-print-none" role="tablist">
+    <% for(var i=1;i<=parseInt(num_page);i++){ 
+      if(i===1){ %>
+    <li class="nav-item">
+      <a class="nav-link active" id="<%= i%>" data-toggle="pill" onclick="changeCode(this)"
+        href="#ex<%= i%>">Exam
+        <%= i%></a>
+    </li>
+    <% } else{ %>
+    <li class="nav-item">
+      <a class="nav-link" id="<%= i%>" data-toggle="pill" onclick="changeCode(this)"
+        href="#ex<%= i%>">Exam
+        <%= i%></a>
+    </li>
+    <% }
+  }; %>
+  </ul>
+  <table>
+      <page id="page" size="A4">
+          <div class="container-fluid justify-content-center p-3 mb-2 bg-white text-dark" style="font-family: Times New Roman, Times, serif;">
+            <div class="row justify-content-center" style="padding-top: 5%; font-size:32pt"> <b> PHIẾU TRẢ LỜI TRẮC NGHIỆM
+              </b></div>
+            <div class="row d-flex justify-content-center " style=" margin-top: 10%;font-size:14pt">
+              <div class="col">
+                <div class="container-fluid border border-dark">
+                  <div> Giám Thị 1</div>
+                  <div> Họ và tên: .......................................</div>
+                  <div> Chữ ký:.......................</div>
+                </div>
+                <div class="container-fluid border border-dark" style="margin-top: 10px">
+                  <div> Giám Thị 2</div>
+                  <div> Họ và tên: .......................................</div>
+                  <div> Chữ ký:........................</div>
+                </div>
+                <div class="container-fluid border border-dark" style="margin-top: 10px">
+                  <div> Giám Thị 3</div>
+                  <div> Họ và tên: .......................................</div>
+                  <div> Chữ ký:........................</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="container-fluid border border-dark" style="margin-left: 0%;">
+                  <div>1. Tên trường:...........................................................</div>
+                  <div>........................................................................................</div>
+                  <div>Ký hiệu trường (bằng chữ)...........................................</div>
+                  <div>2. Điểm thi:.................................................................</div>
+                  <div>3. Phòng thi:................................................................</div>
+                  <div>4. Họ và tên thí sinh:.....................................................</div>
+                  <div>.........................................................................................</div>
+                  <div>5. Ngày sinh:................................................</div>
+                  <div>6. Chữ ký của thí sinh:.................................</div>
+                  <div>7. Môn thi:....................................................</div>
+                  <div>8. Ngày thi: ..................................................</div>
+                </div>
+              </div>
+              <div class="col justify-content-center" style="margin-left: 0%;">
+                <div class="row justify-content-center">
+                  <div class="container-fluid justify-content-center ">
+                    <div>8. Số Báo Danh</div>
+                    <div class="col border border-dark " style="height:30px;width:120px;"></div>
+                  </div>
+                </div>
+                <div class="row justify-content-center">
+                  <div class="container-fluid justify-content-center ">
+                    <div>10. Số Thứ Tự</div>
+                    <div class="col border border-dark " style="height:30px;width:120px;"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col justify-content-center" style="margin-left: -7%; margin-right:-10%">
+                <div class="row align-items-center">
+                  <div class="container-fluid justify-content-center ">
+                    <div>9. Mã Đề Thi</div>
+                    <div class="col border border-dark justify-content-center " style="text-align: center;height:30px;width:90px;">
+                      <b id="examcode">861</b>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="margin-left:-5%; margin-top: 8%">
+                <div> <b>Thí sinh lưu ý: </b> - Giữ cho phiếu phẳng, không bôi bẩn, làm rách. </div>
+                <div style="margin-left:16%;"> - Phải ghi đầy đủ các mục theo hướng dẫn. </div>
+                <div style="margin-left:16%;"> - Nhớ ghi đầy đủ và chính xác trong mục: </div>
+                <div style="margin-left:20%;"> <b>Số báo danh </b>, <b>Mã đề thi</b> trước khi làm bài. </div>
+                <div> <b>Phần trả lời: </b> Số thứ tự câu trả lời dưới đây ứng với số thứ tự câu trắc nghiệm trong đề thi.</div>
+                <div style="margin-left:9%;"> Đối với mỗi câu trắc nghiệm, thí sinh chọn và tô kín một ô tròn tương ứng với
+                  phương án trả lời đúng.</div>
+              </div>
+            </div>
+            <% if(numquest<=60){ %>
+            <div class="row justify-content-center answer-sheet">
+            <div class="container justify-content-center border border-dark" style="text-align:center;margin-bottom:0%;width:10cm; height:0.15cm; background:#000000"></div>
+            </div>
+            <div class="row justify-content-center answer-sheet">
+                <div class="col border border-dark" style="margin-right: 10px;">
+                    <div class=container-fluid>
+                        <div class="row justify-content-center">
+                            <div class="col">
+                              <div class="row justify-content-center">
+                                  <div class="circle"><b></b></div>
+                                <div class="circle"><b>A</b></div>
+                                <div class="circle"><b>B</b></div>
+                                <div class="circle"><b>C</b></div>
+                                <div class="circle"><b>D</b></div>
+                              </div>
+                            </div>
+                          </div>
+                        <% for(var i=1;i<=15;i++){ %>
+                      <div class="row justify-content-center">
+                        <div class="col">
+                          <div class="row justify-content-center">
+                              <div class="circle"><b><%= i%></b></div>
+                            <div class="circle"><b></b></div>
+                            <div class="circle"><b></b></div>
+                            <div class="circle"><b></b></div>
+                            <div class="circle"><b></b></div>
+                          </div>
+                        </div>
+                      </div>
+                      <%}%>
+                    </div>
+                  </div>
+                  <div class="col border border-dark" style="margin-right: 10px;">
+                      <div class=container-fluid>
+                          <div class="row justify-content-center">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                    <div class="circle"><b></b></div>
+                                  <div class="circle"><b>A</b></div>
+                                  <div class="circle"><b>B</b></div>
+                                  <div class="circle"><b>C</b></div>
+                                  <div class="circle"><b>D</b></div>
+                                </div>
+                              </div>
+                            </div>
+                          <% for(var i=16;i<=30;i++){ %>
+                        <div class="row justify-content-center">
+                          <div class="col">
+                            <div class="row justify-content-center">
+                                <div class="circle"><b><%= i%></b></div>
+                              <div class="circle"><b></b></div>
+                              <div class="circle"><b></b></div>
+                              <div class="circle"><b></b></div>
+                              <div class="circle"><b></b></div>
+                            </div>
+                          </div>
+                        </div>
+                        <%}%>
+                      </div>
+                    </div>
+                    <div class="col border border-dark" style="margin-right: 10px;">
+                    <div class=container-fluid>
+                        <div class="row justify-content-center">
+                            <div class="col">
+                              <div class="row justify-content-center">
+                                  <div class="circle"><b></b></div>
+                                <div class="circle"><b>A</b></div>
+                                <div class="circle"><b>B</b></div>
+                                <div class="circle"><b>C</b></div>
+                                <div class="circle"><b>D</b></div>
+                              </div>
+                            </div>
+                          </div>
+                        <% for(var i=31;i<=45;i++){ %>
+                      <div class="row justify-content-center">
+                        <div class="col">
+                          <div class="row justify-content-center">
+                              <div class="circle"><b><%= i%></b></div>
+                            <div class="circle"><b></b></div>
+                            <div class="circle"><b></b></div>
+                            <div class="circle"><b></b></div>
+                            <div class="circle"><b></b></div>
+                          </div>
+                        </div>
+                      </div>
+                      <%}%>
+                    </div>
+                  </div>
+                    <div class="col border border-dark" style="margin-right: 10px;">
+                        <div class=container-fluid>
+                            <div class="row justify-content-center">
+                                <div class="col">
+                                  <div class="row justify-content-center">
+                                      <div class="circle"><b></b></div>
+                                    <div class="circle"><b>A</b></div>
+                                    <div class="circle"><b>B</b></div>
+                                    <div class="circle"><b>C</b></div>
+                                    <div class="circle"><b>D</b></div>
+                                  </div>
+                                </div>
+                              </div>
+                            <% for(var i=46;i<=60;i++){ %>
+                          <div class="row justify-content-center">
+                            <div class="col">
+                              <div class="row justify-content-center">
+                                  <div class="circle"><b><%= i%></b></div>
+                                <div class="circle"><b></b></div>
+                                <div class="circle"><b></b></div>
+                                <div class="circle"><b></b></div>
+                                <div class="circle"><b></b></div>
+                              </div>
+                            </div>
+                          </div>
+                          <%}%>
+                        </div>
+                      </div>
+            </div>
+            <div class="row justify-content-center answer-sheet">
+                <div class="container justify-content-center border border-dark" style="text-align:center;margin-bottom:0%;width:10cm; height:0.15cm; background:#000000"></div>
+                </div>
+            <div class="row justify-content-center" style="padding-top:4%;padding-bottom:5%; font-size:14pt"> <b> Giám thị
+                coi thi không giải thích gì thêm.</b></div>
+          </div>
+          
+        </page>
+        
+        
+        <% } else { %>
+          <div class="row justify-content-center" style="padding-top:4%;padding-bottom:5%; font-size:14pt"> <b> Giám thị
+            coi thi không giải thích gì thêm.</b></div>
+      </div>
+      
+    </page>
+        <div class="pagebreak"></div>
+        <page size="A4" style="height: 40cm; padding-top: 20%">
+          <div class="row justify-content-center answer-sheet">
+            <div class="container justify-content-center border border-dark" style="text-align:center;margin-bottom:0%;width:10cm; height:0.15cm; background:#000000"></div>
+            </div>
+            <div class="row justify-content-center answer-sheet">
+                <div class="col border border-dark" style="margin-right: 10px;">
+                    <div class=container-fluid>
+                        <div class="row justify-content-center">
+                            <div class="col">
+                              <div class="row justify-content-center">
+                                  <div class="circle"><b></b></div>
+                                <div class="circle"><b>A</b></div>
+                                <div class="circle"><b>B</b></div>
+                                <div class="circle"><b>C</b></div>
+                                <div class="circle"><b>D</b></div>
+                              </div>
+                            </div>
+                          </div>
+                        <% for(var i=1;i<=25;i++){ %>
+                      <div class="row justify-content-center">
+                        <div class="col">
+                          <div class="row justify-content-center">
+                              <div class="circle"><b><%= i%></b></div>
+                            <div class="circle"><b></b></div>
+                            <div class="circle"><b></b></div>
+                            <div class="circle"><b></b></div>
+                            <div class="circle"><b></b></div>
+                          </div>
+                        </div>
+                      </div>
+                      <%}%>
+                    </div>
+                  </div>
+                  <div class="col border border-dark" style="margin-right: 10px;">
+                      <div class=container-fluid>
+                          <div class="row justify-content-center">
+                              <div class="col">
+                                <div class="row justify-content-center">
+                                    <div class="circle"><b></b></div>
+                                  <div class="circle"><b>A</b></div>
+                                  <div class="circle"><b>B</b></div>
+                                  <div class="circle"><b>C</b></div>
+                                  <div class="circle"><b>D</b></div>
+                                </div>
+                              </div>
+                            </div>
+                          <% for(var i=26;i<=50;i++){ %>
+                        <div class="row justify-content-center">
+                          <div class="col">
+                            <div class="row justify-content-center">
+                                <div class="circle"><b><%= i%></b></div>
+                              <div class="circle"><b></b></div>
+                              <div class="circle"><b></b></div>
+                              <div class="circle"><b></b></div>
+                              <div class="circle"><b></b></div>
+                            </div>
+                          </div>
+                        </div>
+                        <%}%>
+                      </div>
+                    </div>
+                    <div class="col border border-dark" style="margin-right: 10px;">
+                    <div class=container-fluid>
+                        <div class="row justify-content-center">
+                            <div class="col">
+                              <div class="row justify-content-center">
+                                  <div class="circle"><b></b></div>
+                                <div class="circle"><b>A</b></div>
+                                <div class="circle"><b>B</b></div>
+                                <div class="circle"><b>C</b></div>
+                                <div class="circle"><b>D</b></div>
+                              </div>
+                            </div>
+                          </div>
+                        <% for(var i=51;i<=75;i++){ %>
+                      <div class="row justify-content-center">
+                        <div class="col">
+                          <div class="row justify-content-center">
+                              <div class="circle"><b><%= i%></b></div>
+                            <div class="circle"><b></b></div>
+                            <div class="circle"><b></b></div>
+                            <div class="circle"><b></b></div>
+                            <div class="circle"><b></b></div>
+                          </div>
+                        </div>
+                      </div>
+                      <%}%>
+                    </div>
+                  </div>
+                    <div class="col border border-dark" style="margin-right: 10px;">
+                        <div class=container-fluid>
+                            <div class="row justify-content-center">
+                                <div class="col">
+                                  <div class="row justify-content-center">
+                                      <div class="circle"><b></b></div>
+                                    <div class="circle"><b>A</b></div>
+                                    <div class="circle"><b>B</b></div>
+                                    <div class="circle"><b>C</b></div>
+                                    <div class="circle"><b>D</b></div>
+                                  </div>
+                                </div>
+                              </div>
+                            <% for(var i=76;i<=100;i++){ %>
+                          <div class="row justify-content-center">
+                            <div class="col">
+                              <div class="row justify-content-center">
+                                  <div class="circle"><b><%= i%></b></div>
+                                <div class="circle"><b></b></div>
+                                <div class="circle"><b></b></div>
+                                <div class="circle"><b></b></div>
+                                <div class="circle"><b></b></div>
+                              </div>
+                            </div>
+                          </div>
+                          <%}%>
+                        </div>
+                      </div>
+            </div>
+            <div class="row justify-content-center answer-sheet">
+              <div class="container justify-content-center border border-dark" style="text-align:center;margin-bottom:0%;width:10cm; height:0.15cm; background:#000000"></div>
+              </div>
+        </page>
+        <div class="pagebreak"></div>
+        <% } %>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <% for(var i=1;i<=parseInt(num_page);i++){
+    if(i===1){ %>
+    <div id="ex<%= i%>" class="container tab-pane active" ><br>
+      <page size="A4">
+        <div class="row d-flex justify-content-center" style="text-align: center ;padding-top:5%; margin-bottom: 5%">
+        
+        <h1 style="padding-bottom: 20px; padding-top: 20px;text-align: center; width: 21cm">
+          <%= title%>
+        </h1>
+      </div>
+        <div class="container" style="text-align: left;width: 21cm; font-size: 14pt">
+          <ul style="position: relative; left: -8%; padding: 0px 0px 0px 15px;">
+            <% var tt = 0;
+              var ans = "";
+            quest=mix(quest);
+    quest.forEach(function(data){ 
+      tt++;
+      var item = [
+      data.ans.label1.content,
+      data.ans.label2.content,
+      data.ans.label3.content,
+      data.ans.label4.content,
+      ];
+        var _rand = [];
+        var a =[0,1,2,3];
+        for (var k = a.length - 1; k > 0; k--) {
+          const j = Math.floor(Math.random() * (k + 1));
+          [a[k], a[j]] = [a[j], a[k]];
+      };
+      for(var j=0;j<4;j++){
+        _rand.push(item[a[j]]);
+        if(item[a[j]] === Correct_ans(data))
+          {
+            ans += LabelAns(j);
+            }
+      };
+       %>
+            <div class="row" style="padding-top: 20px; padding-bottom: 5px; margin-left: 3%">
+              <b>Câu
+                <%= tt%>.
+                <%= data.ques%>
+              </b>
+            </div>
+            <div class="row justify-content-center" style="margin-left: 5%">
+              <div class="col-lg-6 col-sm-6">
+                <p style="margin-bottom: 0.5px">
+                  <b>
+                    <%= data.ans.label1.name%>.</b>
+                  <%= _rand[0] %>
+                </p>
+                <p style="margin-bottom: 0.5px">
+                  <b>
+                    <%= data.ans.label3.name%>.</b>
+                  <%= _rand[1] %>
+                </p>
+              </div>
+              <div class="col-lg-6 col-sm-6" style="margin-right: -3%">
+                <p style="margin-bottom: 0.5px">
+                  <b>
+                    <%= data.ans.label2.name%>.</b>
+                  <%= _rand[2] %>
+                </p>
+                <p style="margin-bottom: 0.5px">
+                  <b>
+                    <%= data.ans.label4.name%>.</b>
+                  <%= _rand[3] %>
+                </p>
+              </div>
+            </div> 
+            <% }); Answers.push({
+              total: numquest,
+              exam: i,
+              answers: ans,
+            }) %>
+          </ul>
+        </div>
+      </page>
+    </div>
+    <%} else {%>
+    <div id="ex<%= i%>" class="container tab-pane"><br>
+      <page size="A4">
+        <div class="row d-flex justify-content-center" style="text-align: center">
+        </div>
+        <h1 style="padding-bottom: 40px; padding-top: 40px;text-align: center; width: 21cm">
+          <%= title%>
+        </h1>
+        <div class="container" style="text-align: left;width: 21cm; font-size: 14pt">
+          <ul style="position: relative; left: -8%; padding: 0px 0px 0px 15px;">
+            <% var tt = 0;
+              var ans = "";
+              quest=mix(quest);
+      quest.forEach(function(data){ 
+        tt++;
+        var item =[];
+        item = [
+        data.ans.label1.content,
+        data.ans.label2.content,
+        data.ans.label3.content,
+        data.ans.label4.content,
+        ];
+          var _rand = [];
+          var a =[0,1,2,3];
+          for (var i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+        };
+        for(var j=0;j<4;j++){
+          _rand.push(item[a[j]]);
+          if(item[a[j]] === Correct_ans(data))
+            {
+              ans += LabelAns(j);
+            }
+        }; %>
+            <div class="row" style="padding-top: 20px; padding-bottom: 5px; margin-left: 3%">
+              <b>Câu
+                <%= tt%>.
+                <%= data.ques%>
+              </b>
+            </div>
+            <div class="row justify-content-center" style="margin-left: 5%">
+              <div class="col-lg-6 col-sm-6">
+                <p style="margin-bottom: 0.5px">
+                  <b>
+                    <%= data.ans.label1.name%>.</b>
+                  <%= _rand[0] %>
+                </p>
+                <p style="margin-bottom: 0.5px">
+                  <b>
+                    <%= data.ans.label3.name%>.</b>
+                  <%= _rand[1] %>
+                </p>
+              </div>
+              <div class="col-lg-6 col-sm-6 ">
+                <p style="margin-bottom: 0.5px;">
+                  <b>
+                    <%= data.ans.label2.name%>.</b>
+                  <%= _rand[2] %>
+                </p>
+                <p style="margin-bottom: 0.5px">
+                  <b>
+                    <%= data.ans.label4.name%>.</b>
+                  <%= _rand[3] %>
+                </p>
+              </div>
+            </div>
+            <% }); Answers.push({
+              total: numquest,
+              exam: i,
+              answers: ans,
+            }) %>
+          </ul>
+        </div>
+      </page>
+    </div>
+    
+    <%} 
+    } console.log(Answers);%>
+    <tfoot><tr><td>
+        <div class="footer-space">&nbsp;</div>
+      </td></tr></tfoot>
+  </table>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script>
+    function changeCode(object){
+      document.title='Exam Code: '+ '86'+$(object).attr('id');
+      document.getElementById('footercode').textContent=('86'+$(object).attr('id'));
+      document.getElementById('examcode').textContent=('86'+$(object).attr('id'));
+    }
+  </script>
+</body>
+
+</html>
